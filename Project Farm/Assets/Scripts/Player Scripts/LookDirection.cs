@@ -8,6 +8,7 @@ public class LookDirection : MonoBehaviour
     float distance = 4.0f;
 
     public FarmTile FarmTile = null; //Variable used in Farm.cs to interact with GameTile. 
+    public NpcScript Npc = null;
 
     void LateUpdate()
     {
@@ -47,9 +48,19 @@ public class LookDirection : MonoBehaviour
         if(gameObject != null)
         {
             LFFarmTile(gameObject);
-            //LFNpc(targetObject);
-            
+            LFNpc(gameObject);
+
         }
+    }
+
+    public NpcScript LFNpc(GameObject gameObject)
+    {
+        Npc = gameObject.GetComponent<NpcScript>();
+
+        if (Npc != null)
+            return Npc;
+        else
+            return null;
     }
 
     //Used in Hit() to look if the gameobject the player is looking at is a GameTile

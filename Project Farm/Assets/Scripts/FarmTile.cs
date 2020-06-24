@@ -9,9 +9,6 @@ public class FarmTile : MonoBehaviour
     string tileName = null;
     MeshFilter filter;
 
-    [SerializeField]
-    Mesh ground = default;
-
     private void Start()
     {
         filter = gameObject.GetComponent<MeshFilter>();
@@ -37,7 +34,7 @@ public class FarmTile : MonoBehaviour
 
     public void ChangeObject()
     {
-        filter.mesh = ground;
+
     }
 
     public string TilePos(int x, int y)

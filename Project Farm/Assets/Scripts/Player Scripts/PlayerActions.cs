@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerActions : MonoBehaviour
 {
-    public GameObject inventory;
+    public Canvas inventory;
 
     public static bool inventoryOpen; //Me being lazy
 
@@ -43,13 +44,15 @@ public class PlayerActions : MonoBehaviour
             if(!inventoryOpen)
             {
                 print("Opened Inventory");
-                inventory.SetActive(true);
+                //inventory.SetActive(true);
+                inventory.enabled = true;
                 inventoryOpen = true;
             }
             else
             {
                 print("Closed Inventory");
-                inventory.SetActive(false);
+                //inventory.SetActive(false);
+                inventory.enabled = false;
                 inventoryOpen = false;
             }
             

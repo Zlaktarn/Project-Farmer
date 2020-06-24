@@ -8,12 +8,64 @@ public class InventoryScript : MonoBehaviour
     public ItemDatabase itemDatabase;
     public UiInventory inventoryUI;
 
+    public Storage pInventory = null;
+
+    int wood;
+    public int []supplies;
+
+    int minStack = 1;
+    int maxStack = 20;
+    int stacksAmount = 0;
+
+    int stack = 0;
+    int stackMultiplier = 0;
+
     private void Start()
     {
         //Used as a test
-        GiveItem(0);
         GiveItem(1);
-        GiveItem(0);
+    }
+
+    public void Update()
+    {
+        AmountOfItems(0);
+
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GiveItem(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            RemoveItem(0);
+        }
+    }
+
+    public void AmountOfItems(int id)
+    {
+        supplies[id] = pInventory.wood;
+
+        int stacks = 1 + supplies[id] / 20;
+
+        
+        int maxStack = 20 * stackMultiplier;
+        int stack = 1 + maxStack;
+
+        int minStack = 20 * stackMultiplier;
+
+        if (supplies[id] >= stack)
+        {
+            GiveItem(id);
+            stackMultiplier += 1;
+        }
+
+        if(supplies[id] < maxStack)
+        {
+
+        }
+
+
     }
 
     //Adds items into the Inventory.
@@ -25,6 +77,7 @@ public class InventoryScript : MonoBehaviour
         Debug.Log("Added item: " + itemToAdd.title);
     }
 
+    //Used in RemoveItem to look for a specific item and remove it.
     public Item CheckForItem(int id)
     {
         return characterItems.Find(item => item.id == id);
