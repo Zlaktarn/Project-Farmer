@@ -3,12 +3,11 @@
 public class LookDirection : MonoBehaviour
 {
     [SerializeField]
-    GameObject targetObject = null;
-    [SerializeField]
     float distance = 4.0f;
 
     public FarmTile FarmTile = null; //Variable used in Farm.cs to interact with GameTile. 
     public NpcScript Npc = null;
+    GameObject targetObject = null;
 
     void LateUpdate()
     {
@@ -34,31 +33,50 @@ public class LookDirection : MonoBehaviour
             Debug.DrawRay(transform.position, forward, Color.red);
             targetObject = hit.collider.gameObject;
 
-            LookInteractions(targetObject);
-            //LFFarmTile(targetObject);
-
             return targetObject;
         }
 
         return null;
     }
 
-    public void LookInteractions(GameObject gameObject)
+    public bool LocateTarget()
     {
-        if(gameObject != null)
-        {
-            LFFarmTile(gameObject);
-            LFNpc(gameObject);
-
-        }
+        if (targetObject != null)
+            return true;
+        else
+            return false;
     }
 
-    public NpcScript LFNpc(GameObject gameObject)
+    public GameObject LFChest()
     {
-        Npc = gameObject.GetComponent<NpcScript>();
+        if(LocateTarget())
+        {
+            if (targetObject.name == "Chest")
+            {
+                print("We found a chest yoo!");
+                return targetObject;
+            }
+            else
+                return null;
+        }
+        else
+            return null;
+    }
 
-        if (Npc != null)
-            return Npc;
+    public NpcScript LFNpc()
+    {
+        if (LocateTarget())
+        {
+            Npc = targetObject.GetComponent<NpcScript>();
+
+            if (Npc != null)
+            {
+                print("We found a NPC yoo!");
+                return Npc;
+            }
+            else
+                return null;
+        }
         else
             return null;
     }
@@ -66,11 +84,16 @@ public class LookDirection : MonoBehaviour
     //Used in Hit() to look if the gameobject the player is looking at is a GameTile
     public FarmTile LFFarmTile(GameObject gameObject)
     {
-        FarmTile = gameObject.GetComponent<FarmTile>();
+        if (LocateTarget())
+        {
+            FarmTile = gameObject.GetComponent<FarmTile>();
 
-        if (FarmTile != null)
-            return FarmTile;
-        else
+            if (FarmTile != null)
+                return FarmTile;
+            else
+                return null;
+        }
+        else 
             return null;
     }
 }

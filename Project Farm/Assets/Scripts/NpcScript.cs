@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class NpcScript : MonoBehaviour
 {
-    [SerializeField]
-    string[] dialogue = null;
+    public string[] dialogue = null;
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +15,6 @@ public class NpcScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            for (int i = 0; i < dialogue.Length; i++)
-            {
-                print(dialogue[i]);
-            }
-        }
+        
     }
 }

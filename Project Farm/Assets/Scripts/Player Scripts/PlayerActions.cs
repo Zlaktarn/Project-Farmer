@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
     public Canvas inventory;
 
     public static bool inventoryOpen; //Me being lazy
+
+    [SerializeField]
+    LookDirection look = default;
 
     void Update()
     {
@@ -34,8 +34,13 @@ public class PlayerActions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
         }
-    }
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            look.LFChest();
+            look.LFNpc();
+        }
+    }
 
     private void OpenInventory()
     {
@@ -43,19 +48,14 @@ public class PlayerActions : MonoBehaviour
         {
             if(!inventoryOpen)
             {
-                print("Opened Inventory");
-                //inventory.SetActive(true);
                 inventory.enabled = true;
                 inventoryOpen = true;
             }
             else
             {
-                print("Closed Inventory");
-                //inventory.SetActive(false);
                 inventory.enabled = false;
                 inventoryOpen = false;
             }
-            
         }
     }
 }

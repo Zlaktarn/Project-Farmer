@@ -10,62 +10,37 @@ public class InventoryScript : MonoBehaviour
 
     public Storage pInventory = null;
 
-    int wood;
     public int []supplies;
-
-    int minStack = 1;
-    int maxStack = 20;
-    int stacksAmount = 0;
-
-    int stack = 0;
-    int stackMultiplier = 0;
+    int[] stackMultiplier = new int[2];
 
     private void Start()
     {
-        //Used as a test
-        GiveItem(1);
+        for (int i = 0; i < stackMultiplier.Length; i++)
+        {
+            stackMultiplier[i] = 0;
+        }
     }
 
     public void Update()
     {
-        AmountOfItems(0);
-
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            GiveItem(0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            RemoveItem(0);
-        }
+        AmountOfItems(0, pInventory.resources[0], 20); //Wood
+        AmountOfItems(1, pInventory.resources[1], 20); //Ore
     }
 
-    public void AmountOfItems(int id)
+    public void AmountOfItems(int id, int resource, int maxStack)
     {
-        supplies[id] = pInventory.wood;
+        supplies[id] = resource;
 
-        int stacks = 1 + supplies[id] / 20;
-
-        
-        int maxStack = 20 * stackMultiplier;
-        int stack = 1 + maxStack;
-
-        int minStack = 20 * stackMultiplier;
-
-        if (supplies[id] >= stack)
+        if ((maxStack * stackMultiplier[id] - supplies[id]) < 0)
         {
             GiveItem(id);
-            stackMultiplier += 1;
+            ++stackMultiplier[id];
         }
-
-        if(supplies[id] < maxStack)
+        else if ((maxStack * stackMultiplier[id] - supplies[id]) > maxStack || supplies[id] <= 0 && stackMultiplier[id] > 0)
         {
-
+            RemoveItem(id);
+            --stackMultiplier[id];
         }
-
-
     }
 
     //Adds items into the Inventory.

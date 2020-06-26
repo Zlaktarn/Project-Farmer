@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class Storage : MonoBehaviour
 {
-    public int wood = 5;
-    public int ore = 0;
-
-
+    public int[] resources = new int[2];
 
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            resources[0] += 10;
+        }
     }
 }
