@@ -44,20 +44,18 @@ public class LookDirection : MonoBehaviour
         if (targetObject != null)
             return true;
         else
+        {
+            print("No object in sight");
             return false;
+        }
     }
 
     public GameObject LFChest()
     {
-        if(LocateTarget())
+        if (targetObject.name == "Chest")
         {
-            if (targetObject.name == "Chest")
-            {
-                print("We found a chest yoo!");
-                return targetObject;
-            }
-            else
-                return null;
+            print("We found a chest yoo!");
+            return targetObject;
         }
         else
             return null;
@@ -65,35 +63,28 @@ public class LookDirection : MonoBehaviour
 
     public NpcScript LFNpc()
     {
-        if (LocateTarget())
-        {
-            Npc = targetObject.GetComponent<NpcScript>();
+        Npc = targetObject.GetComponent<NpcScript>();
 
-            if (Npc != null)
-            {
-                print("We found a NPC yoo!");
-                return Npc;
-            }
-            else
-                return null;
+        if (Npc != null)
+        {
+            print("We found a NPC yoo!");
+            return Npc;
         }
         else
             return null;
     }
 
     //Used in Hit() to look if the gameobject the player is looking at is a GameTile
-    public FarmTile LFFarmTile(GameObject gameObject)
+    public FarmTile LFFarmTile()
     {
-        if (LocateTarget())
-        {
-            FarmTile = gameObject.GetComponent<FarmTile>();
+        FarmTile = targetObject.GetComponent<FarmTile>();
 
-            if (FarmTile != null)
-                return FarmTile;
-            else
-                return null;
+        if (FarmTile != null)
+        {
+            print("Oooh! I see a farmtile!");
+            return FarmTile;
         }
-        else 
+        else
             return null;
     }
 }

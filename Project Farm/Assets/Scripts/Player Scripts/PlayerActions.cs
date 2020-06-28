@@ -33,12 +33,19 @@ public class PlayerActions : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if (look.LocateTarget())
+            {
+                look.LFFarmTile();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            look.LFChest();
-            look.LFNpc();
+            if(look.LocateTarget())
+            {
+                look.LFChest();
+                look.LFNpc();
+            }
         }
     }
 
