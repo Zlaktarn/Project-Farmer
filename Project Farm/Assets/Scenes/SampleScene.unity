@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657755, g: 0.4964127, b: 0.57481825, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657642, g: 0.49641156, b: 0.5748181, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1078,7 +1078,7 @@ PrefabInstance:
     - target: {fileID: 3102422043408555457, guid: a15f3042f4a22184eaddd9302c5f64ca,
         type: 3}
       propertyPath: DayLengthModifier
-      value: 0.1
+      value: 9.2
       objectReference: {fileID: 0}
     - target: {fileID: 3102422043408555470, guid: a15f3042f4a22184eaddd9302c5f64ca,
         type: 3}
