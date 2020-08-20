@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 889399799562496424}
   m_Layer: 0
   m_Name: Dug Tile
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: 
-  ground: {fileID: 0}
 --- !u!33 &6871551907589146111
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -2,12 +2,19 @@
 
 public class PlayerActions : MonoBehaviour
 {
-    public Canvas inventory;
+    public Canvas inventoryCanvas;
 
     public static bool inventoryOpen; //Me being lazy
 
     [SerializeField]
     LookDirection look = default;
+
+    Storage inventory;
+
+    private void Start()
+    {
+        inventory = gameObject.GetComponent<Storage>();
+    }
 
     void Update()
     {
@@ -45,6 +52,12 @@ public class PlayerActions : MonoBehaviour
             {
                 look.LFChest();
                 look.LFNpc();
+                look.LFObject();
+
+                if(look.LootId >= 0)
+                {
+                    inventory.resources[look.LootId] += 1;
+                }
             }
         }
     }
@@ -55,12 +68,12 @@ public class PlayerActions : MonoBehaviour
         {
             if(!inventoryOpen)
             {
-                inventory.enabled = true;
+                inventoryCanvas.enabled = true;
                 inventoryOpen = true;
             }
             else
             {
-                inventory.enabled = false;
+                inventoryCanvas.enabled = false;
                 inventoryOpen = false;
             }
         }

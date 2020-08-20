@@ -7,6 +7,8 @@ public class LookDirection : MonoBehaviour
 
     public FarmTile FarmTile = null; //Variable used in Farm.cs to interact with GameTile. 
     public NpcScript Npc = null;
+    public LootObject Loot = null;
+    public int LootId = -1;
     GameObject targetObject = null;
 
     void LateUpdate()
@@ -73,6 +75,24 @@ public class LookDirection : MonoBehaviour
         else
             return null;
     }
+
+    public LootObject LFObject()
+    {
+        Loot = targetObject.GetComponent<LootObject>();
+
+        if (Loot != null)
+        {
+            LootId = Loot.lootId;
+            Loot.PickUp();
+            return Loot;
+        }
+        else
+        {
+            LootId = -1;
+            return null;
+        }
+    }
+
 
     //Used in Hit() to look if the gameobject the player is looking at is a GameTile
     public FarmTile LFFarmTile()
