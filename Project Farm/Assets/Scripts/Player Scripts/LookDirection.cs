@@ -5,7 +5,7 @@ public class LookDirection : MonoBehaviour
     [SerializeField]
     float distance = 4.0f;
 
-    public FarmTile FarmTile = null; //Variable used in Farm.cs to interact with GameTile. 
+    public FarmTile farmTile = null; //Variable used in Farm.cs to interact with GameTile. 
     public NpcScript Npc = null;
     public LootObject Loot = null;
     public int LootId = -1;
@@ -97,12 +97,12 @@ public class LookDirection : MonoBehaviour
     //Used in Hit() to look if the gameobject the player is looking at is a GameTile
     public FarmTile LFFarmTile()
     {
-        FarmTile = targetObject.GetComponent<FarmTile>();
+        farmTile = targetObject.GetComponent<FarmTile>();
 
-        if (FarmTile != null)
+        if (farmTile != null)
         {
             print("Oooh! I see a farmtile!");
-            return FarmTile;
+            return farmTile;
         }
         else
             return null;

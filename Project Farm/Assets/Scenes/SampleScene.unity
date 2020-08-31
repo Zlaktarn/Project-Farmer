@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657642, g: 0.49641156, b: 0.5748181, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657755, g: 0.4964127, b: 0.57481825, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -416,6 +416,11 @@ PrefabInstance:
       propertyPath: inventoryCanvas
       value: 
       objectReference: {fileID: 1448029966543751361}
+    - target: {fileID: 1188936241682819060, guid: a31dbf8fd9233d04fb4664b078a99214,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1489018219}
     - target: {fileID: 1589784020828671920, guid: a31dbf8fd9233d04fb4664b078a99214,
         type: 3}
       propertyPath: m_Layer
@@ -963,6 +968,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51b0922b927e0ae4eb4eb75d86d43930, type: 3}
+--- !u!95 &1489018219 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1366464403, guid: a31dbf8fd9233d04fb4664b078a99214,
+    type: 3}
+  m_PrefabInstance: {fileID: 235401780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1585850371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1035,11 +1046,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 7974366359439967798, guid: 5b7077a00f87602469d152d23a32c94c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7974366359439967799, guid: 5b7077a00f87602469d152d23a32c94c,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2028027575}
+    - target: {fileID: 7974366359439967799, guid: 5b7077a00f87602469d152d23a32c94c,
+        type: 3}
+      propertyPath: boardSize.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974366359439967799, guid: 5b7077a00f87602469d152d23a32c94c,
+        type: 3}
+      propertyPath: boardSize.y
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7077a00f87602469d152d23a32c94c, type: 3}
 --- !u!1001 &1878693999
@@ -1112,7 +1138,7 @@ PrefabInstance:
     - target: {fileID: 3102422043408555457, guid: a15f3042f4a22184eaddd9302c5f64ca,
         type: 3}
       propertyPath: DayLengthModifier
-      value: 9.2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3102422043408555470, guid: a15f3042f4a22184eaddd9302c5f64ca,
         type: 3}

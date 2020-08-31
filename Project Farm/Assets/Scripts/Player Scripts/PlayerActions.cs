@@ -9,7 +9,16 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     LookDirection look = default;
 
+    [SerializeField]
+    Animator anim;
+
     Storage inventory;
+
+    float timer = 0;
+    [SerializeField]
+    float digInterval = 2f;
+
+    public bool digging = false;
 
     private void Start()
     {
@@ -36,27 +45,54 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
+    private bool Digging(FarmTile farmTile)
+    {
+
+        anim.SetBool("Digging", true);
+        timer += Time.deltaTime;
+        digging = true;
+
+        if (timer >= digInterval)
+        {
+            farmTile.DugTile();
+            timer = 0;
+
+            return false;
+        }
+        else
+            return true;
+    }
+
     private void Action()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (look.LocateTarget())
         {
-            if (look.LocateTarget())
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                look.LFFarmTile();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if(look.LocateTarget())
-            {
-                look.LFChest();
-                look.LFNpc();
-                look.LFObject();
-
-                if(look.LootId >= 0)
+                if (look.LFFarmTile() != null && look.LFFarmTile().type != GameTileContentType.Dug)
                 {
-                    inventory.resources[look.LootId] += 1;
+                    Digging(look.LFFarmTile());
+                }
+                else
+                {
+                    anim.SetBool("Digging", false);
+                    digging = false;
+                }
+            }
+           
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (look.LocateTarget())
+                {
+                    look.LFChest();
+                    look.LFNpc();
+                    look.LFObject();
+
+                    if (look.LootId >= 0)
+                    {
+                        inventory.resources[look.LootId] += 1;
+                    }
                 }
             }
         }

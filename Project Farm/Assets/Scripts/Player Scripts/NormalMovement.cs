@@ -32,9 +32,12 @@ public class NormalMovement : MonoBehaviour
     Vector3 rotation;
     Vector3 groundedVelocity;
 
+    PlayerActions actions = null;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        actions = GetComponent<PlayerActions>();
     }
 
     void Update()
@@ -48,18 +51,21 @@ public class NormalMovement : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            Movement();
-
-            moveVector = input;
-            moveVector *= speed;
-
-            verticalVelocity = -1;
-
-            groundedVelocity = Vector3.ProjectOnPlane(moveVector, Vector3.up);
-
-            if (Input.GetKeyDown(KeyCode.Space))
+            if(!actions.digging)
             {
-                verticalVelocity = jumpForce;
+                Movement();
+
+                moveVector = input;
+                moveVector *= speed;
+
+                verticalVelocity = -1;
+
+                groundedVelocity = Vector3.ProjectOnPlane(moveVector, Vector3.up);
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    verticalVelocity = jumpForce;
+                }
             }
         }
         

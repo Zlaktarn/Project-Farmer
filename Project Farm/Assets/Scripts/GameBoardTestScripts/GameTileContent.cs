@@ -4,7 +4,7 @@ public class GameTileContent : MonoBehaviour
 {
 
     [SerializeField]
-    GameTileContentType type = default;
+    public GameTileContentType type = default;
 
     GameTileContentFactory originFactory;
 

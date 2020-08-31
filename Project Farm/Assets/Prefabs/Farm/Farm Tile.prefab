@@ -80,7 +80,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06d0a497659fc434098265564927c031, type: 2}
+  - {fileID: 2100000, guid: 411293412f6b5b04b8507c9755dabf1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,6 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: 
+  type: 0
+  groundMat: {fileID: 2100000, guid: 411293412f6b5b04b8507c9755dabf1f, type: 2}
+  dugMat: {fileID: 2100000, guid: 0717023dd25120848b0ad73592ba5421, type: 2}
 --- !u!1 &8981741334360305385
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class Farm : MonoBehaviour
 
     private void HandleTouch()
     {
-        FarmTile tile = player.FarmTile;
+        FarmTile tile = player.farmTile;
         if (tile != null)
         {
             //Destroy(board.gameObject);

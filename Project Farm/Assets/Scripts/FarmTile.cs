@@ -8,10 +8,20 @@ public class FarmTile : MonoBehaviour
     [SerializeField]
     string tileName = null;
     MeshFilter filter;
+    public GameTileContentType type = default;
+
+    [SerializeField]
+    Material groundMat = default;
+    [SerializeField]
+    Material dugMat = default;
+
+    Renderer render = default;
 
     private void Start()
     {
         filter = gameObject.GetComponent<MeshFilter>();
+        render = GetComponent<Renderer>();
+        render.material = groundMat;
     }
 
     public GameTileContent Content
@@ -32,6 +42,13 @@ public class FarmTile : MonoBehaviour
         }
     }
 
+    public void DugTile()
+    {
+        type = GameTileContentType.Dug;
+        render.material = dugMat;
+    }
+
+
     public void ChangeObject()
     {
 
@@ -41,7 +58,7 @@ public class FarmTile : MonoBehaviour
     {
         if(tileName != null)
         {
-            tileName = x + " " + y;
+            tileName = x + ", " + y;
         }
 
         return tileName;
